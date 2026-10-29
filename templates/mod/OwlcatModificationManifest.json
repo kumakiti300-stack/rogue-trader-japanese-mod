@@ -1,0 +1,10 @@
+{
+  "UniqueName": "RTJP_Japanese",
+  "Version": "0.0.0",
+  "DisplayName": "Rogue Trader Japanese",
+  "Description": "Unofficial partial Japanese retranslation.",
+  "Author": "Rogue Trader Japanese project",
+  "Repository": "https://github.com/kumakiti300-stack/rogue-trader-japanese-mod",
+  "HomePage": "https://github.com/kumakiti300-stack/rogue-trader-japanese-mod",
+  "Dependencies": []
+}

@@ -19,3 +19,13 @@ enGB.json
 *.zip
 *.7z
 *.log
+*.json
+!templates/mod/OwlcatModificationManifest.json
+!templates/mod/OwlcatModificationSettings.json
+*.sha256
+SHA256SUMS.txt
+*.dll
+*.exe
+*.pdb
+*.tar
+*.unitypackage

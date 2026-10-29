@@ -1,0 +1,65 @@
+name: 翻訳・表示の問題
+description: 文章の意味・口調・用語・能力説明・文字の表示について報告します。
+title: "[翻訳] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        重大なネタバレはタイトルに書かず、本文に入れてください。訳案やセーブデータ、ログ一式は不要です。
+  - type: input
+    id: versions
+    attributes:
+      label: ゲームとMODのバージョン
+      description: 試験版やバージョン不明の場合は、その旨を書いてください。
+      placeholder: "ゲーム: … / MOD: …"
+    validations:
+      required: true
+  - type: input
+    id: scene
+    attributes:
+      label: 章・場所・会話相手
+      description: 会話以外なら、該当する画面・アイテム・能力などの名前を書いてください。
+    validations:
+      required: true
+  - type: textarea
+    id: actual_text
+    attributes:
+      label: 実際に表示された文章
+      description: 表示された本文をそのまま記入してください。スクリーンショットの添付でも構いません。
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: 気になった点・困った点
+      description: 意味を取りにくい箇所、人物の口調、効果や条件の説明、文字の欠けなどを教えてください。
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: 前後の会話・直前の選択肢
+      description: 分かる範囲で構いません。
+    validations:
+      required: false
+  - type: textarea
+    id: suggestion
+    attributes:
+      label: 期待した意味・訳案
+      description: 案がなくても報告できます。
+    validations:
+      required: false
+  - type: input
+    id: other_mods
+    attributes:
+      label: 併用しているフォント・翻訳MOD
+      description: 表示の問題がある場合に、分かる範囲で書いてください。
+    validations:
+      required: false
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: スクリーンショット
+      description: 前後の会話や表示の状態が分かる画像があれば、ここに添付してください。
+    validations:
+      required: false
