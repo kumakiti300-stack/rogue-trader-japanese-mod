@@ -1,0 +1,21 @@
+# 開発データ・一時出力
+/data/
+/raw/
+/input/
+/output/
+/tmp/
+/.tmp/
+/build/
+/dist/
+/reports/
+/.agents/
+/.venv/
+__pycache__/
+*.py[cod]
+.env*
+*.jsonl
+jaJP.json
+enGB.json
+*.zip
+*.7z
+*.log
