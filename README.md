@@ -3,7 +3,10 @@
 『Warhammer 40,000: Rogue Trader』の日本語を見直す非公式MODです。
 英語原文から、会話・地の文・選択肢・能力説明を訳し直しています。
 
-配布準備中です。公開リリースはまだありません。
+現在は非公開で、試験版をReleaseの下書きとして準備しています。一般配布はまだ行っていません。
+
+- **[v0.1.0 試験版の下書き](https://github.com/kumakiti300-stack/rogue-trader-japanese-mod/releases/tag/untagged-b52b78027995311cc70d)**（閲覧には書き込み権限が必要です）
+- [Releases一覧](https://github.com/kumakiti300-stack/rogue-trader-japanese-mod/releases)
 
 - [翻訳方針と変更サンプル](docs/guide.md)
 - [用語の読み替え早見表](docs/terminology.md)
