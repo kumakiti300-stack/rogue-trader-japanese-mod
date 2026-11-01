@@ -10,4 +10,4 @@
 - [権利表記](NOTICE.md)
 
 対応ゲーム版、確認範囲、既知の問題は、このZIPを配布した[Releaseの案内](https://github.com/kumakiti300-stack/rogue-trader-japanese-mod/releases)で確認してください。
-AIによる翻訳・校正を行っており、人間による全文校正と全分岐のプレイ確認は完了していません。
+AIによる翻訳・校正を行っています。全分岐のプレイ確認は完了していません。
