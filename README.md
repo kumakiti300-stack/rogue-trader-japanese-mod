@@ -1,22 +1,15 @@
 # Rogue Trader 日本語再翻訳MOD
 
-『Warhammer 40,000: Rogue Trader』の日本語を見直す非公式MODです。
-英語原文から、会話・地の文・選択肢・能力説明を訳し直しています。
+ローグトレーダーの日本語を、英語から訳し直したMODです。
+AIで翻訳・校正して、実機でも確認しています。Windows向けです。
 
 **[v0.1.0 のMOD用ZIPをダウンロード](https://github.com/kumakiti300-stack/rogue-trader-japanese-mod/releases/download/v0.1.0/rogue-trader-japanese-0.1.0.zip)**
 
-[リリース詳細・更新履歴・チェックサム](https://github.com/kumakiti300-stack/rogue-trader-japanese-mod/releases/latest)を確認してから、[導入手順](docs/install.md)に沿ってインストールしてください。
+入れ方はZIP内のREADMEにまとめました。[Web版の導入手順](docs/install.md)もあります。
+「Source code」ではなく、上のZIPを使ってください。
 
-- [翻訳方針と変更サンプル](docs/guide.md)
-- [用語の読み替え早見表](docs/terminology.md)
-- [導入・更新・取り外し](docs/install.md)
-- [気になる訳・表示の報告](docs/reporting.md)
+気に入らない訳は、好きに直して使ってOKです。連絡や確認はいりません。
 
-Releasesに添付したMOD用ZIPを使ってください。「Code → Download ZIP」や自動生成の「Source code」には、翻訳ファイルを含めていません。
+気になるところがあれば[Issues](https://github.com/kumakiti300-stack/rogue-trader-japanese-mod/issues/new/choose)へどうぞ。
 
-差し替え対象外の文章は、ゲームの日本語で表示されます。
-AIによる翻訳・校正を行い、制作者が実機で確認しています。
-
-権利表記は[NOTICE.md](NOTICE.md)を参照してください。
-
-配布ファイルを作る場合は、[パッケージ作成手順](docs/packaging.md)を参照してください。
+[訳の変更例](docs/guide.md) / [用語表](docs/terminology.md) / [リリース一覧](https://github.com/kumakiti300-stack/rogue-trader-japanese-mod/releases) / [権利表記](NOTICE.md)
