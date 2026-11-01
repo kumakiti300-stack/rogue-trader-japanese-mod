@@ -3,7 +3,7 @@
 翻訳JSONはこのリポジトリへ保存せず、配布用ZIPだけに含めます。ZIPとチェックサムはGitに登録せず、配布時にReleasesのアセットとして添付します。
 GitHubが自動生成する「Source code」のZIPには、このリポジトリの内容だけが入るため、翻訳MODの導入用には使えません。
 
-v0.1.0は試験版の下書きとして準備しています。Releaseは未公開で、リポジトリはPrivateのままです。
+公開済みの配布物と確認範囲は[最新Release](https://github.com/kumakiti300-stack/rogue-trader-japanese-mod/releases/latest)に記載しています。
 
 ## 用意するもの
 
@@ -54,11 +54,10 @@ RTJP_Japanese/
 ## 配布時
 
 READMEの配布状況と、導入案内の確認範囲を実際の配布内容に合わせて更新します。
-下書きを公開したら、READMEの下書き・未公開の表示も改めます。Releases一覧へのリンクはそのまま使用できます。
+READMEのダウンロードリンクと、Releaseに添付するZIPの版番号・ファイル名を揃えます。
 確認したコミットに対応するタグを用意し、ZIPと `.sha256` をReleaseへ添付します。案内には対応ゲーム版、確認範囲、既知の問題を記載してください。
 「Source code」の自動生成ZIPと、添付したMOD用ZIPを区別して案内します。
 
-リポジトリがPrivateの間は、閲覧権限のある人だけがReleaseを参照できます。一般公開への切り替えとReleaseの公開は、別途判断します。
 パッケージ作成コマンドは、アップロード、タグ・Releaseの作成、リポジトリの公開設定変更、ゲーム操作を行いません。
 
 [GitHubのReleasesの説明](https://docs.github.com/en/repositories/releasing-projects-on-github/about-releases) / [READMEへ戻る](../README.md)

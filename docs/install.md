@@ -1,6 +1,6 @@
 # 導入・更新・取り外し
 
-翻訳を含む配布ZIPを使う、Windows向けの手順です。配布状況は[README](../README.md)で確認してください。
+翻訳を含む[MOD用ZIP](https://github.com/kumakiti300-stack/rogue-trader-japanese-mod/releases/latest)を使う、Windows向けの手順です。
 対応ゲーム版、確認済みの範囲、既知の問題は各Releaseの案内で確認してください。
 
 翻訳ファイルは配布ZIPに含めます。GitHubの「Code → Download ZIP」で取得するリポジトリのファイルだけでは導入できません。
