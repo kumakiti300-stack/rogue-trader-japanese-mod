@@ -3,7 +3,7 @@
 翻訳JSONはこのリポジトリへ保存せず、配布用ZIPだけに含めます。ZIPとチェックサムはGitに登録せず、配布時にReleasesのアセットとして添付します。
 GitHubが自動生成する「Source code」のZIPには、このリポジトリの内容だけが入るため、翻訳MODの導入用には使えません。
 
-公開済みの配布物と確認範囲は[最新Release](https://github.com/kumakiti300-stack/rogue-trader-japanese-mod/releases/latest)に記載しています。
+公開済みの配布物と更新内容は[最新Release](https://github.com/kumakiti300-stack/rogue-trader-japanese-mod/releases/latest)に記載しています。
 
 ## 用意するもの
 
@@ -12,7 +12,7 @@ GitHubが自動生成する「Source code」のZIPには、このリポジトリ
 - 配布版番号、対応ゲーム版、確認範囲、既知の問題。
 
 このツールは翻訳の選別や校正をしません。入力されたJSONの全文を、そのままZIPに収録します。
-開発側の試験出力を使う場合も、配布する訳の選定とパッケージの版番号・識別名は別に判断してください。
+開発側の出力を使う場合も、配布する訳の選定とパッケージの版番号・識別名は別に判断してください。
 
 ## 検査とZIP作成
 
@@ -30,7 +30,7 @@ py -3 -B tools/package_release.py --localization $translation --version $version
 ```
 
 指定先へZIPと、その隣に `.zip.sha256` を作成します。同名ファイルは上書きしません。
-入力JSONの基本構造とZIPのCRCは確認しますが、ゲーム内の表示や進行の確認は別に必要です。
+入力JSONの基本構造とZIPのCRCを検査します。更新時は、ゲーム内の表示と動作も確認してください。
 
 ZIPには次の構造を含めます。
 

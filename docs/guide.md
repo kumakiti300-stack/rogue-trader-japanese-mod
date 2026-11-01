@@ -148,9 +148,9 @@ MOD訳
 
 ## 導入前に
 
-- 部分的な差し替えです。序章・ACT1を優先し、共通システムや他の章・DLCにも修正があります。未修正の箇所はゲームの既存日本語で表示されます。
-- AIによる翻訳・校正を行い、英語との再対照やタグ・変数の検査を進めています。全会話・全分岐のプレイ確認は完了していません。掲載例は全体の完成度を示すものではありません。
-- 配布ファイル、照合したゲーム版、確認範囲、既知の問題は[最新Release](https://github.com/kumakiti300-stack/rogue-trader-japanese-mod/releases/latest)で確認してください。
+- 序章・ACT1をはじめ、共通システムや他の章・DLCの文章も差し替えます。対象外の文章はゲームの日本語で表示されます。
+- AIによる翻訳・校正に加え、英語原文との対照、タグ・変数の検査、制作者による実機確認を行っています。
+- 配布ファイル、対象のゲーム版、更新内容は[最新Release](https://github.com/kumakiti300-stack/rogue-trader-japanese-mod/releases/latest)で確認してください。
 
 <details>
 <summary>比較資料について</summary>
