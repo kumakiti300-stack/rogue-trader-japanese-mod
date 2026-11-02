@@ -6,7 +6,7 @@
 
 ## ダウンロード
 
-**[v0.1.5 のMOD用ZIPをダウンロード](https://github.com/kumakiti300-stack/rogue-trader-japanese-mod/releases/download/v0.1.5/rogue-trader-japanese-0.1.5.zip)**
+**[v0.1.6 のMOD用ZIPをダウンロード](https://github.com/kumakiti300-stack/rogue-trader-japanese-mod/releases/download/v0.1.6/rogue-trader-japanese-0.1.6.zip)**
 
 - 対応バージョン: ゲーム **1.6.1.514**（Steam Build 24257885）
 - 「Source code」ではなく、上のZIPを使ってください
