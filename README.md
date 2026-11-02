@@ -6,7 +6,7 @@
 
 ## ダウンロード
 
-**[v0.1.4 のMOD用ZIPをダウンロード](https://github.com/kumakiti300-stack/rogue-trader-japanese-mod/releases/download/v0.1.4/rogue-trader-japanese-0.1.4.zip)**
+**[v0.1.5 のMOD用ZIPをダウンロード](https://github.com/kumakiti300-stack/rogue-trader-japanese-mod/releases/download/v0.1.5/rogue-trader-japanese-0.1.5.zip)**
 
 - 対応バージョン: ゲーム **1.6.1.514**（Steam Build 24257885）
 - 「Source code」ではなく、上のZIPを使ってください
@@ -16,7 +16,7 @@
 
 - 収録文字列は約7.6万件。まだ訳し直していない箇所は、既存の公式日本語がそのまま表示されます（部分差し替え式）
 - 用語は「GW公式訳を土台に、40k固有用語は音写し、システム用語は機能訳」の方針で統一しています → [翻訳方針](docs/translation-policy.md)
-- 変更した用語は全1,815項目を公開しています → [用語データベース](docs/terminology.md) ／ 変更サンプルは [訳の変更例](docs/guide.md)
+- 変更した用語は全1,816項目を公開しています → [用語データベース](docs/terminology.md) ／ 変更サンプルは [訳の変更例](docs/guide.md)
 
 ## 入れ方
 
