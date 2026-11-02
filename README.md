@@ -12,4 +12,4 @@ AIで翻訳・校正して、実機でも確認しています。Windows向け�
 
 気になるところがあれば[Issues](https://github.com/kumakiti300-stack/rogue-trader-japanese-mod/issues/new/choose)へどうぞ。
 
-[訳の変更例](docs/guide.md) / [翻訳方針](docs/translation-policy.md) / [用語表](docs/terminology.md) / [リリース一覧](https://github.com/kumakiti300-stack/rogue-trader-japanese-mod/releases) / [権利表記](NOTICE.md)
+[訳の変更例](docs/guide.md) / [翻訳方針](docs/translation-policy.md) / [用語データベース（全1,815項目）](docs/terminology.md) / [リリース一覧](https://github.com/kumakiti300-stack/rogue-trader-japanese-mod/releases) / [権利表記](NOTICE.md)
