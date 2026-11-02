@@ -26,6 +26,13 @@
 
 「聖工場」「技術司祭」「製造総司令」のように、GW公式日本語に用例がある訳は原則1に従って使います。一般の職業・説明文と、固有の称号も区別します。
 
+## 判断の例
+
+- **Master of Ordnance**: 記述的な英語だが、GW公式日本語のデータシートに用例があるため、原則1を原則3より優先し「マスター・オヴ・オードナンス」とする。
+- **Master of Whispers**: 「囁き」は密偵網を指す比喩で、一般的な職名ではない。固有の称号として音写する。
+- **Factotum**: 英語でも「何でも屋」の意で定着した語（ラテン語の fac totum 由来）だが、ここでは称号として音写する。
+- **称号のMasterの形**: 「Master of X」は治める領域を、「Master＋職名」（Master Helmsmanなど）は熟練位を表す。ofの有無も含め、原語の形をそのまま写す。
+
 ## 参照したGW公式日本語の例
 
 - [聖工場：ジャーナル・タクティカの紹介](https://www.warhammer-community.com/ja-jp/articles/ileev0sj/saturday-pre-orders-battleforces-ciaphas-cain-and-the-age-of-darkness/)
