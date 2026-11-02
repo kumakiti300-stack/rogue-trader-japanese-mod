@@ -3,10 +3,12 @@
 ローグトレーダーの日本語を、英語から訳し直したMODです。
 AIで翻訳・校正して、実機でも確認しています。Windows向けです。
 
-**[v0.1.3 のMOD用ZIPをダウンロード](https://github.com/kumakiti300-stack/rogue-trader-japanese-mod/releases/download/v0.1.3/rogue-trader-japanese-0.1.3.zip)**
+**[v0.1.4 のMOD用ZIPをダウンロード](https://github.com/kumakiti300-stack/rogue-trader-japanese-mod/releases/download/v0.1.4/rogue-trader-japanese-0.1.4.zip)**
 
-入れ方はZIP内のREADMEにまとめました。[Web版の導入手順](docs/install.md)もあります。
+[導入手順](docs/install.md)は、ModFinder RTを使う場合と手動で入れる場合に分けています。ZIP内のREADMEにも同じ手順があります。
 「Source code」ではなく、上のZIPを使ってください。
+
+**タイトル画面で「次へ」が「コンティニュー」になっていれば、導入成功です。**
 
 気に入らない訳は、好きに直して使ってOKです。連絡や確認はいりません。
 

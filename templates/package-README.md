@@ -7,7 +7,21 @@ AIを使って翻訳・校正し、制作者が実機で動作を確認してい
 
 ## 導入
 
-1. ゲームを完全に終了し、配布ZIPを展開します。
+### ModFinder RTを使う場合
+
+すでにModFinder RTを使っている場合は、こちらの手順で入れてください。
+
+1. ゲームを完全に終了します。
+2. ダウンロードしたMOD用ZIPを**展開せず**、ModFinder RTの **Drag zips here to install** へドラッグします。
+3. 一覧の **Rogue Trader Japanese** を有効にします。
+4. ゲームを起動し、言語を日本語に設定します。
+
+ファイルの配置と有効化はModFinder RTに任せます。この手順では、設定JSONを手で編集する必要はありません。
+手動ですでに配置している場合も、ModFinder RTを開き直して一覧から有効化してください。
+
+### 手動で入れる場合
+
+1. **ゲームとModFinder RTなどのMOD管理ツールを完全に終了**し、配布ZIPを展開します。
 2. **Win＋R**を押し、次の場所を開きます。
 
    ```text
@@ -16,47 +30,77 @@ AIを使って翻訳・校正し、制作者が実機で動作を確認してい
 
 3. その中の `Modifications` フォルダへ、展開した `RTJP_Japanese` フォルダを丸ごとコピーします。`Modifications` がなければ作成してください。
 
-   主なファイルが次の位置にあることを確認します。フォルダを二重に入れないでください。
+   主なファイルは次の配置になります。フォルダを二重に入れないでください。
 
    ```text
    Modifications/
      RTJP_Japanese/
        OwlcatModificationManifest.json
        OwlcatModificationSettings.json
+       Assemblies/
+       Blueprints/
+       Bundles/
        Localization/
          jaJP.json
        README.md
    ```
 
-4. 手順2で開いた場所にある `OwlcatModificationManagerSettings.json` を、メモ帳などのテキストエディターで開きます。編集前にファイルのコピーを保存しておくと元に戻せます。
+   `Assemblies`・`Blueprints`・`Bundles` は空のままで正常です。フォルダごとコピーしてください。
 
-   `EnabledModifications` の配列に `"RTJP_Japanese"` を追加して保存してください。他のMODの項目は残し、項目の間はカンマで区切ります。
+4. 手順2で開いた場所の `OwlcatModificationManagerSettings.json` を、メモ帳などで開きます。編集前にコピーを保存しておくと元に戻せます。
 
-   設定ファイルがない場合は、次の内容で新しく作成します。すでにあるファイルを、この内容で丸ごと置き換えないでください。
+   既存の設定とほかのMODの項目を残して、次のように編集します。
+
+   - `EnabledModifications` に `"RTJP_Japanese"` を追加します。
+   - `ActiveModifications` がある場合は、そこにも `"RTJP_Japanese"` を追加します。
+   - `DisabledModifications` に `"RTJP_Japanese"` がある場合は、その項目だけ削除します。
+
+   設定ファイルがない場合だけ、次の内容で新しく作成します。既存のファイル全体をこの内容で置き換えないでください。
 
    ```json
    {
-     "EnabledModifications": ["RTJP_Japanese"]
+     "EnabledModifications": ["RTJP_Japanese"],
+     "ActiveModifications": ["RTJP_Japanese"],
+     "DisabledModifications": []
    }
    ```
 
-   新規作成したファイルの名前が `OwlcatModificationManagerSettings.json.txt` になっていないことも確認してください。
+   ファイル名が `OwlcatModificationManagerSettings.json.txt` になっていないことも確認してください。
+   旧試験版を使っていた場合は `"RTJP_Japanese_Trial"` を`EnabledModifications` と `ActiveModifications` から外し、配布版と同時に有効化しないでください。
 
-   旧試験版を使っていた場合は、配列から `"RTJP_Japanese_Trial"` を外して、配布版の `"RTJP_Japanese"` を有効にしてください。
+5. 保存してからゲームを起動し、言語を日本語に設定します。
 
-5. ゲームを起動し、言語を日本語に設定します。
+### 導入できたか確認
 
-ゲーム本体のファイルを上書きする必要はありません。差し替え対象外の文章は、ゲームの日本語で表示されます。
+**タイトル画面で「次へ」が「コンティニュー」になっていれば、導入成功です。**
+
+ゲーム本体のファイルを上書きする必要はありません。差し替え対象外の文章はゲームの日本語で表示されます。
+
+### Unity Mod Managerとの併用
+
+本MODはゲーム標準のOwlcat形式です。ModFinder RTはこの形式も扱えますが、UMM形式のMODとは配置先・有効化の画面が異なります。
+
+- 本MOD：`Modifications` に配置。ゲーム標準のMOD画面は **Shift＋F10**。
+- UMM形式のMOD：`UnityModManager` に配置。UMMの画面は **Ctrl＋F10**。
+
+UMMの一覧に本MODが表示されなくても、UMM用フォルダへ移し直す必要はありません。導入の確認には、上のタイトル画面の表示を使ってください。
+本作にはUMMが内蔵されているため、UMM本体を別途導入してゲームをパッチする必要はありません。
 
 ## 更新
 
-ゲームを終了してから、新しいZIPの `RTJP_Japanese` フォルダで、導入済みの同名フォルダを上書きします。有効化の設定はそのまま使えます。
+ModFinder RTで導入した場合は、新しいZIPもModFinder RTへドラッグして更新してください。無効化・削除もModFinder RTから行えます。
+
+手動で更新する場合は、ゲームとMOD管理ツールを終了してから、新しいZIPの `RTJP_Japanese` フォルダで、導入済みの同名フォルダを上書きします。有効化の設定はそのまま使えます。
 
 訳を自分で直している場合は、更新前に `Localization/jaJP.json` のコピーを保存してください。更新すると、編集した内容も新しいファイルで置き換わります。
 
 ## 無効化・取り外し
 
-ゲームを終了し、`OwlcatModificationManagerSettings.json` の `EnabledModifications` から `"RTJP_Japanese"` だけを削除して保存します。他のMODの項目は残してください。
+ModFinder RTで管理している場合は、ModFinder RTから無効化・削除してください。
+
+手動の場合は、ゲームとMOD管理ツールを終了してから操作します。
+
+`OwlcatModificationManagerSettings.json` の `EnabledModifications`・`ActiveModifications`・`DisabledModifications` に `"RTJP_Japanese"` があれば、その項目だけ削除して保存します。ほかのMODの項目は残してください。
 
 完全に取り外す場合は、さらに `Modifications` 内の `RTJP_Japanese` フォルダを削除します。
 
