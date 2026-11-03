@@ -22,3 +22,8 @@ jobs:
         run: python -B tools/check_repository.py --history
       - name: Test package creation and repository checks
         run: python -B -m unittest discover -s tests -v
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+      - name: Test Japanese book-text display fix
+        run: dotnet run --project runtime-tests/RTJP.DisplayFix.Tests.csproj -c Release

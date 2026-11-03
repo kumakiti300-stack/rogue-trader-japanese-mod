@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net472</TargetFramework>
+    <AssemblyName>RTJP.DisplayFix</AssemblyName>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <LangVersion>7.3</LangVersion>
+    <Deterministic>true</Deterministic>
+    <DebugType>none</DebugType>
+    <PathMap>$(MSBuildProjectDirectory)=/src</PathMap>
+  </PropertyGroup>
+  <Target Name="CheckGamePath" BeforeTargets="ResolveReferences">
+    <Error Condition="!Exists('$(GameManagedDir)/Code.dll')" Text="Set GameManagedDir to the game's WH40KRT_Data/Managed directory." />
+  </Target>
+  <ItemGroup>
+    <Reference Include="Code" HintPath="$(GameManagedDir)/Code.dll" Private="false" />
+    <Reference Include="RogueTrader.GameCore" HintPath="$(GameManagedDir)/RogueTrader.GameCore.dll" Private="false" />
+    <Reference Include="Kingmaker.Localization.Enums" HintPath="$(GameManagedDir)/Kingmaker.Localization.Enums.dll" Private="false" />
+    <Reference Include="0Harmony" HintPath="$(GameManagedDir)/0Harmony.dll" Private="false" />
+    <Reference Include="Owlcat.Runtime.Core" HintPath="$(GameManagedDir)/Owlcat.Runtime.Core.dll" Private="false" />
+    <Reference Include="UnityEngine.CoreModule" HintPath="$(GameManagedDir)/UnityEngine.CoreModule.dll" Private="false" />
+  </ItemGroup>
+</Project>

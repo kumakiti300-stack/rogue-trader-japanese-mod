@@ -9,6 +9,7 @@ GitHubが自動生成する「Source code」のZIPには、このリポジトリ
 
 - Python 3.11以降とGit。追加のPythonパッケージは不要です。
 - 開発側で校正・QAを済ませた、Owlcat形式の `jaJP.json`。リポジトリ外に置いてください。
+- [表示修正をビルド](../runtime/README.md)した `RTJP.DisplayFix.dll`。これもリポジトリ外に置きます。
 - 配布版番号、対応ゲーム版、確認範囲、既知の問題。
 
 このツールは翻訳の選別や校正をしません。入力されたJSONの全文を、そのままZIPに収録します。
@@ -22,11 +23,13 @@ GitHubが自動生成する「Source code」のZIPには、このリポジトリ
 ```powershell
 py -3 -B tools/check_repository.py --history
 py -3 -B -m unittest discover -s tests -v
+dotnet run --project runtime-tests/RTJP.DisplayFix.Tests.csproj -c Release
 
 $translation = Read-Host 'リポジトリ外のjaJP.jsonのパス'
+$displayFix = Read-Host 'リポジトリ外のRTJP.DisplayFix.dllのパス'
 $version = Read-Host '配布版番号（数字3区切り、例 0.1.0）'
 $archive = Join-Path (Read-Host 'ZIPを保存するフォルダ') "rogue-trader-japanese-$version.zip"
-py -3 -B tools/package_release.py --localization $translation --version $version --output $archive
+py -3 -B tools/package_release.py --localization $translation --display-fix $displayFix --version $version --output $archive
 ```
 
 指定先へZIPと、その隣に `.zip.sha256` を作成します。同名ファイルは上書きしません。
@@ -39,7 +42,7 @@ RTJP_Japanese/
   OwlcatModificationManifest.json
   OwlcatModificationSettings.json
   Localization/jaJP.json
-  Assemblies/
+  Assemblies/RTJP.DisplayFix.dll
   Bundles/
   Blueprints/
   README.md

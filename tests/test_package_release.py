@@ -119,6 +119,31 @@ class PackageReleaseTests(unittest.TestCase):
             manifest = json.loads(archive.read("RTJP_Japanese/OwlcatModificationManifest.json"))
         self.assertEqual(manifest["Version"], "1.2.3.4")
 
+    def test_display_fix_is_explicit_and_does_not_pull_in_game_dlls(self) -> None:
+        dll = self.base / "external-build" / "RTJP.DisplayFix.dll"
+        dll.parent.mkdir()
+        dll.write_bytes(b"MZ synthetic test DLL")
+        (dll.parent / "Code.dll").write_bytes(b"must not ship")
+        self.build(display_fix=dll)
+        with zipfile.ZipFile(self.output) as archive:
+            self.assertEqual(archive.read(packager.DISPLAY_FIX_ENTRY), dll.read_bytes())
+            self.assertEqual(archive.read(packager.LOCALIZATION_ENTRY), VALID_LOCALIZATION)
+            self.assertFalse(any(name.endswith("/Code.dll") for name in archive.namelist()))
+
+    def test_bad_display_fix_fails_before_creating_outputs(self) -> None:
+        missing = self.base / "missing" / "RTJP.DisplayFix.dll"
+        wrong_name = self.base / "Code.dll"
+        wrong_name.write_bytes(b"MZ wrong DLL")
+        not_dll = self.base / "RTJP.DisplayFix.dll"
+        not_dll.write_bytes(b"not an executable")
+        internal = self.repo / "RTJP.DisplayFix.dll"
+        internal.write_bytes(b"MZ forbidden in repository")
+        for path in (missing, wrong_name, not_dll, internal):
+            with self.subTest(path=path):
+                with self.assertRaises(packager.PackageError):
+                    self.build(display_fix=path)
+                self.assert_no_output()
+
     def test_japanese_zip_filename_has_utf8_checksum_sidecar(self) -> None:
         output = self.output.with_name("日本語再翻訳-1.2.3.zip")
         self.build(output=output)

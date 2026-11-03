@@ -37,7 +37,7 @@
      RTJP_Japanese/
        OwlcatModificationManifest.json
        OwlcatModificationSettings.json
-       Assemblies/
+       Assemblies/RTJP.DisplayFix.dll
        Blueprints/
        Bundles/
        Localization/
@@ -45,7 +45,7 @@
        README.md
    ```
 
-   `Assemblies`・`Blueprints`・`Bundles` は空のままで正常です。フォルダごとコピーしてください。
+   `Assemblies` には日本語の先頭文字のずれを直すDLLが入っています。`Blueprints`・`Bundles` は空のままで正常です。フォルダごとコピーしてください。
 
 4. 手順2で開いた場所の `OwlcatModificationManagerSettings.json` を、メモ帳などで開きます。編集前にコピーを保存しておくと元に戻せます。
 

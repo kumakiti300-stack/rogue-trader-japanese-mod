@@ -29,3 +29,5 @@ SHA256SUMS.txt
 *.pdb
 *.tar
 *.unitypackage
+**/bin/
+**/obj/

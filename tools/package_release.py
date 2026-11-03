@@ -24,6 +24,7 @@ REPOSITORY_ROOT = Path(__file__).resolve().parents[1]
 MOD_ROOT = "RTJP_Japanese"
 PROJECT_URL = "https://github.com/kumakiti300-stack/rogue-trader-japanese-mod"
 LOCALIZATION_ENTRY = f"{MOD_ROOT}/Localization/jaJP.json"
+DISPLAY_FIX_ENTRY = f"{MOD_ROOT}/Assemblies/RTJP.DisplayFix.dll"
 EMPTY_DIRECTORIES = tuple(f"{MOD_ROOT}/{name}/" for name in ("Assemblies", "Bundles", "Blueprints"))
 DOCUMENTS = {
     f"{MOD_ROOT}/NOTICE.md": "NOTICE.md",
@@ -129,6 +130,24 @@ def _read_asset(repository: Path, relative: str) -> bytes:
         raise PackageError(f"required package source is missing or unreadable: {relative}") from exc
 
 
+def _read_display_fix(path: Path, repository: Path) -> bytes:
+    candidate = Path(os.path.abspath(path.expanduser()))
+    if _inside(candidate, repository):
+        raise PackageError("display-fix input must be outside the repository")
+    try:
+        resolved = candidate.resolve(strict=True)
+        if _inside(resolved, repository):
+            raise PackageError("display-fix input must resolve outside the repository")
+        if resolved.name != "RTJP.DisplayFix.dll" or not resolved.is_file():
+            raise PackageError("display-fix input must be RTJP.DisplayFix.dll")
+        raw = resolved.read_bytes()
+    except OSError as exc:
+        raise PackageError("display-fix input must be a readable existing DLL") from exc
+    if not raw.startswith(b"MZ"):
+        raise PackageError("display-fix input must have a PE executable header")
+    return raw
+
+
 def _package_files(repository: Path, localization: bytes, version: str) -> dict[str, bytes]:
     manifest = _decode_json(
         _read_asset(repository, "templates/mod/OwlcatModificationManifest.json"), "manifest template"
@@ -219,6 +238,7 @@ def package_release(
     output: Path,
     *,
     repository_root: Path | None = None,
+    display_fix: Path | None = None,
 ) -> dict[str, str | int]:
     """Build and verify one new ZIP and its SHA-256 sidecar.
 
@@ -237,6 +257,8 @@ def package_release(
 
     localization_raw, count = _read_localization(localization, repository)
     files = _package_files(repository, localization_raw, version)
+    if display_fix is not None:
+        files[DISPLAY_FIX_ENTRY] = _read_display_fix(display_fix, repository)
     output.parent.mkdir(parents=True, exist_ok=True)
     created: list[tuple[Path, tuple[int, int]]] = []
     try:
@@ -265,9 +287,10 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--localization", type=Path, required=True, help="existing jaJP.json outside this repository")
     parser.add_argument("--version", required=True, help="three or four dot-separated numeric components")
     parser.add_argument("--output", type=Path, required=True, help="new release ZIP; existing files are never overwritten")
+    parser.add_argument("--display-fix", type=Path, help="externally built RTJP.DisplayFix.dll")
     args = parser.parse_args(argv)
     try:
-        result = package_release(args.localization, args.version, args.output)
+        result = package_release(args.localization, args.version, args.output, display_fix=args.display_fix)
     except (PackageError, OSError, ValueError) as exc:
         parser.exit(1, f"error: {exc}\n")
     print(json.dumps(result, ensure_ascii=False))

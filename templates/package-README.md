@@ -5,6 +5,8 @@
 『Warhammer 40,000: Rogue Trader』の会話・地の文・選択肢・能力説明などを、英語原文から訳し直す非公式MODです。Windows版向けです。
 AIを使って翻訳・校正し、制作者が実機で動作を確認しています。翻訳の照合にはゲーム1.6.1.514のデータを使用しています。
 
+ブックイベントなどで日本語の先頭文字がずれる問題を防ぐ表示修正も含みます。最初の文字を大きくする装飾を日本語設定のときだけ省き、本文と同じ書式で表示します。追加のMODや設定は不要です。
+
 ## 導入
 
 ### ModFinder RTを使う場合
@@ -37,7 +39,7 @@ AIを使って翻訳・校正し、制作者が実機で動作を確認してい
      RTJP_Japanese/
        OwlcatModificationManifest.json
        OwlcatModificationSettings.json
-       Assemblies/
+       Assemblies/RTJP.DisplayFix.dll
        Blueprints/
        Bundles/
        Localization/
@@ -45,7 +47,7 @@ AIを使って翻訳・校正し、制作者が実機で動作を確認してい
        README.md
    ```
 
-   `Assemblies`・`Blueprints`・`Bundles` は空のままで正常です。フォルダごとコピーしてください。
+   `Assemblies` には日本語の先頭文字のずれを直すDLLが入っています。`Blueprints`・`Bundles` は空のままで正常です。フォルダごとコピーしてください。
 
 4. 手順2で開いた場所の `OwlcatModificationManagerSettings.json` を、メモ帳などで開きます。編集前にコピーを保存しておくと元に戻せます。
 
