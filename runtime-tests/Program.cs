@@ -6,6 +6,9 @@ using Kingmaker.Localization;
 using Kingmaker.Localization.Enums;
 using Kingmaker.Modding;
 using RTJP.DisplayFix;
+using Kingmaker.Enums;
+using Kingmaker.UnitLogic.UI;
+using Kingmaker.UnitLogic.Mechanics.Blueprints;
 
 internal static class Program
 {
@@ -64,7 +67,61 @@ internal static class Program
         HarmonyLib.Harmony.Fail = true;
         BookTextFix.Initialize(modification);
         Check(modification.Logger.Errors.Count == 1);
+        CheckGalvanicGate();
         Console.WriteLine(checks + " display-fix regression checks passed (API substitutes).");
+    }
+
+    private static void CheckGalvanicGate()
+    {
+        LocalizationManager.Instance = new LocalizationManager { CurrentLocale = Locale.jaJP };
+        const string feature = "e895e579fb5a4eeaa9608675b86d50cb";
+        var source = new BlueprintMechanicEntityFact { AssetGuid = feature };
+        var ui = new UIPropertySettings { LinkKey = "ArmorPenetration", PropertySource = source };
+        ContextPropertyName? result = ContextPropertyName.Bonus1;
+        GalvanicGateTooltipPatch.Postfix(ui, ref result);
+        Check(result == ContextPropertyName.Value2);
+        ui.LinkKey = "DamageBonus";
+        result = ContextPropertyName.Value2;
+        GalvanicGateTooltipPatch.Postfix(ui, ref result);
+        Check(result == ContextPropertyName.Value1);
+
+        // A different feature or a third-party correction must keep its value.
+        foreach (string guid in new[] { feature, "other-feature" })
+        foreach (string key in new[] { "DamageBonus", "ArmorPenetration", "AbilityRange", "other", null })
+        foreach (ContextPropertyName? original in new ContextPropertyName?[] {
+            ContextPropertyName.Value1, ContextPropertyName.Value2, ContextPropertyName.Bonus1, null })
+        {
+            source.AssetGuid = guid;
+            ui.LinkKey = key;
+            result = original;
+            GalvanicGateTooltipPatch.Postfix(ui, ref result);
+            var expected = original;
+            if (guid == feature && key == "DamageBonus" && original == ContextPropertyName.Value2)
+                expected = ContextPropertyName.Value1;
+            if (guid == feature && key == "ArmorPenetration" && original == ContextPropertyName.Bonus1)
+                expected = ContextPropertyName.Value2;
+            Check(result == expected);
+        }
+        source.AssetGuid = feature;
+        ui.LinkKey = "ArmorPenetration";
+        foreach (Locale locale in Enum.GetValues(typeof(Locale)))
+        {
+            LocalizationManager.Instance.CurrentLocale = locale;
+            result = ContextPropertyName.Bonus1;
+            GalvanicGateTooltipPatch.Postfix(ui, ref result);
+            Check(result == (locale == Locale.jaJP ? ContextPropertyName.Value2 : ContextPropertyName.Bonus1));
+        }
+        LocalizationManager.Instance.CurrentLocale = Locale.jaJP;
+        ui.PropertySource = null;
+        result = ContextPropertyName.Bonus1;
+        GalvanicGateTooltipPatch.Postfix(ui, ref result);
+        Check(result == ContextPropertyName.Bonus1);
+        GalvanicGateTooltipPatch.Postfix(null, ref result);
+        Check(result == ContextPropertyName.Bonus1);
+        ui.PropertySource = source;
+        LocalizationManager.Instance = null;
+        GalvanicGateTooltipPatch.Postfix(ui, ref result);
+        Check(result == ContextPropertyName.Bonus1);
     }
 }
 
@@ -81,6 +138,20 @@ namespace Kingmaker.Localization
     }
 }
 namespace Kingmaker.UI.Common { public static class UIUtility { public static void GetBookFormat() {} } }
+namespace Kingmaker.Enums { public enum ContextPropertyName { Value1, Value2, Bonus1 } }
+namespace Kingmaker.UnitLogic.Mechanics.Blueprints
+{
+    public class BlueprintMechanicEntityFact { public string AssetGuid; }
+}
+namespace Kingmaker.UnitLogic.UI
+{
+    public class UIPropertySettings
+    {
+        public string LinkKey;
+        public BlueprintMechanicEntityFact PropertySource;
+        public ContextPropertyName? PropertyName { get { return ContextPropertyName.Bonus1; } }
+    }
+}
 namespace Kingmaker.Modding
 {
     [AttributeUsage(AttributeTargets.Method)]
@@ -103,6 +174,7 @@ namespace HarmonyLib
         public HarmonyPatch(Type target, string method) { Target = target; Method = method; }
     }
     [AttributeUsage(AttributeTargets.Method)] public class HarmonyPrefix : Attribute {}
+    [AttributeUsage(AttributeTargets.Method)] public class HarmonyPostfix : Attribute {}
     public class Harmony
     {
         public static string Id; public static Assembly Assembly; public static bool Fail;

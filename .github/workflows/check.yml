@@ -25,5 +25,5 @@ jobs:
       - uses: actions/setup-dotnet@v4
         with:
           dotnet-version: '8.0.x'
-      - name: Test Japanese book-text display fix
+      - name: Test Japanese display fixes
         run: dotnet run --project runtime-tests/RTJP.DisplayFix.Tests.csproj -c Release

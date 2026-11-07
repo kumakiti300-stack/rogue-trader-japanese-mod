@@ -6,5 +6,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="../runtime/BookTextFix.cs" Link="BookTextFix.cs" />
+    <Compile Include="../runtime/GalvanicGateTooltipFix.cs" Link="GalvanicGateTooltipFix.cs" />
   </ItemGroup>
 </Project>

@@ -6,7 +6,7 @@ using Kingmaker.Localization.Enums;
 using Kingmaker.Modding;
 using Kingmaker.UI.Common;
 
-[assembly: AssemblyVersion("0.1.7.0")]
+[assembly: AssemblyVersion("0.1.8.0")]
 
 namespace RTJP.DisplayFix
 {
@@ -18,12 +18,12 @@ namespace RTJP.DisplayFix
             try
             {
                 new Harmony("RTJP.JapaneseBookText").PatchAll(typeof(BookTextFix).Assembly);
-                modification.Logger.Log("Japanese book-text initial-letter fix enabled.");
+                modification.Logger.Log("Japanese display fixes enabled.");
             }
             catch (Exception error)
             {
                 // A changed game API must not prevent the translation pack loading.
-                modification.Logger.Error("Could not enable book-text display fix: " + error);
+                modification.Logger.Error("Could not enable Japanese display fixes: " + error);
             }
         }
     }
